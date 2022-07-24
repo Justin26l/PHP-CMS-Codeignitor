@@ -4,10 +4,15 @@ class Testimonial_manage extends MY_Controller {
     public function index(){
 
         $this->load->model("Testimonial_model");
+        $testimonial = $this->Testimonial_model->get_where(['is_deleted'=>0]);
 
-        $testimonialList = $this->Testimonial_model->get_where([
-            'is_deleted' => 0
-        ]);
+        $testimonialList=[];
+        foreach($testimonial as $v){
+            if (substr($v['img'],0,4)!='http'){
+                $v['img']=base_url($v['img']);
+            }
+            array_push($testimonialList,$v);
+        };
 
         $this->data['testimonialList'] = $testimonialList;
         

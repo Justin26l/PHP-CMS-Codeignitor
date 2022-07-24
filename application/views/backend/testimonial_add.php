@@ -12,7 +12,7 @@
         <input id="menu_type" name="message"  class="form-control" />
     </div>
     <div class="form-group">
-        <label for="image">Image</label>
+        <label for="image">Image url</label>
         <input id="image" name="img"  class="form-control" />
     </div>
     <input type="submit" value="Submit" class="btn btn-primary" />

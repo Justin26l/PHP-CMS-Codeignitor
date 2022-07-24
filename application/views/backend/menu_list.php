@@ -23,7 +23,7 @@
                     <td>'.$v['title'].'</td>
                     <td>'.$v['menu_type'].'</td>
                     <td>'.$v['description'].'</td>
-                    <td><img src="'.base_url($v['image']).'" class="img-fluid" style="width:100px;height:100px;" /></td>
+                    <td><img src="'.$v['image'].'" class="img-fluid" style="width:100px;height:100px;" /></td>
                     <td>'.$v['price'].'</td>
                     <td>'.$v['created_date'].'</td>
                     <td>

@@ -7,11 +7,23 @@ class Frontend extends CI_Controller {
         $this->load->model('Gallery_model');
         $this->load->model('Testimonial_model');
 
-        $menuList = $this->Menu_model->get_where(['is_deleted'=>0]);
         $chefList = $this->Chef_model->get_where(['is_deleted'=>0]);
         $galleryList = $this->Gallery_model->get_where(['is_deleted'=>0]);
+        
         $testimonialList = $this->Testimonial_model->get_where(['is_deleted'=>0]);
-
+        foreach($testimonialList as $v){
+            if (substr($v['img'],0,4)!='http'){
+                $v['img']=base_url($v['img']);
+            }
+        }
+        
+        $menuList = $this->Menu_model->get_where(['is_deleted'=>0]);
+        foreach($menuList as $v){
+            if (substr($v['image'],0,4)!='http'){
+                $v['image']=base_url($v['image']);
+            }
+        }
+        
         $this->load->view('home',[
             "menulist"=>$menuList,
             "chefList"=>$chefList,

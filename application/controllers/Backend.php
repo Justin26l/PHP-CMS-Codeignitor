@@ -28,11 +28,19 @@ class Backend extends MY_Controller {
     public function contact(){
         $this->load->model('Contact_model');
         $contactlist=$this->Contact_model->get_where($where=['is_deleted'=>0], $order_by=['created_date'=>'DESC']);
-        $this->data=['contactlist'=>$contactlist];
+        $contactlist_isDeleted=$this->Contact_model->get_where($where=['is_deleted'=>1], $order_by=['created_date'=>'DESC']);
+        $this->data=['contactlist'=>$contactlist,'contactlist_is_deleted'=>$contactlist_isDeleted];
 
         $this->load->view("backend/header", $this->data);
         $this->load->view("backend/contact", $this->data);
         $this->load->view("backend/footer", $this->data);
+    }
+
+    public function contact_delete($id){
+        $this->load->model('Contact_model');
+        $this->Contact_model->deleteXmod(['id'=>$id]);
+
+        redirect(base_url('backend/contact'));
     }
 
 }

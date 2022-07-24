@@ -4,10 +4,15 @@ class Menu_manage extends MY_Controller {
     public function index(){
 
         $this->load->model("Menu_model");
+        $menu = $this->Menu_model->get_where(['is_deleted'=>0]);
 
-        $menuList = $this->Menu_model->get_where([
-            'is_deleted' => 0
-        ]);
+        $menuList=[];
+        foreach($menu as $v){
+            if (substr($v['image'],0,4)!='http'){
+                $v['image']=base_url($v['image']);
+            }
+            array_push($menuList,$v);
+        };
 
         $this->data['menuList'] = $menuList;
         
@@ -37,8 +42,6 @@ class Menu_manage extends MY_Controller {
         ]);
 
         redirect(base_url('backend/menu'));
-
-
     }
 
     public function add(){

@@ -60,7 +60,7 @@
   <header id="header" class="fixed-top d-flex align-items-cente">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Restaurantly</a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="<?=base_url()?>">Restaurantly</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -216,9 +216,9 @@
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
-        <?php foreach( $menulist as $x){?>
+        <?php foreach($menulist as $x){?>
           <div class="col-lg-6 menu-item filter-starters">
-            <img src="<?=base_url($x['image'])?>" class="menu-img" alt="">
+            <img src="<?=$x['image']?>" class="menu-img" alt="">
             <div class="menu-content">
               <a href="#"><?=$x['title']?></a><span><?=$x['price']?></span>
             </div>

@@ -20,7 +20,7 @@
                     <td>'.$v['name'].'</td>
                     <td>'.$v['work'].'</td>
                     <td>'.$v['message'].'</td>
-                    <td><img src="'.base_url($v['img']).'" class="img-fluid" style="width:100px;height:100px;"/></td>
+                    <td><img src="'.$v['img'].'" class="img-fluid" style="width:100px;height:100px;"/></td>
                     <td>
                     <a href="'.base_url('backend/testimonial_edit/'.$v['id']).'">Edit</a>
                     <a href="'.base_url('backend/testimonial_delete/'.$v['id']).'">Delete</a>
